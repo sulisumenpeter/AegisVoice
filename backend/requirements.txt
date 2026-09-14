@@ -1,0 +1,14 @@
+﻿fastapi
+uvicorn
+sqlalchemy
+pydantic
+pydantic-settings
+alembic
+pytest
+passlib[bcrypt]
+python-jose[cryptography]
+slowapi==0.1.9
+limits[redis]
+psycopg[binary]
+redis
+httpx
