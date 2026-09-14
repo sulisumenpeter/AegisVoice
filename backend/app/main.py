@@ -5,11 +5,13 @@ import traceback
 # Fix Vercel Paths
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-db_url = os.environ.get("DATABASE_URL", "")
+db_url = os.environ.get("DATABASE_URL", os.environ.get("POSTGRES_URL", ""))
 if db_url.startswith("postgres://"):
-    os.environ["DATABASE_URL"] = db_url.replace("postgres://", "postgresql+psycopg://", 1)
+    db_url = db_url.replace("postgres://", "postgresql+psycopg://", 1)
 elif db_url.startswith("postgresql://") and not db_url.startswith("postgresql+psycopg://"):
-    os.environ["DATABASE_URL"] = db_url.replace("postgresql://", "postgresql+psycopg://", 1)
+    db_url = db_url.replace("postgresql://", "postgresql+psycopg://", 1)
+os.environ["DATABASE_URL"] = db_url
+
 
 # Global error state
 init_error = None
