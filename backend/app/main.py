@@ -5,7 +5,17 @@ import traceback
 # Fix Vercel Paths
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-db_url = os.environ.get("DATABASE_URL", os.environ.get("POSTGRES_URL", ""))
+db_url = os.environ.get("DATABASE_URL") or os.environ.get("POSTGRES_URL") or os.environ.get("aegis_POSTGRES_URL", "")
+
+if not db_url:
+    for key, value in os.environ.items():
+        if key.endswith("POSTGRES_URL"):
+            db_url = value
+            break
+
+if not db_url:
+    raise RuntimeError("CRITICAL ERROR: No database URL found!")
+
 if db_url.startswith("postgres://"):
     db_url = db_url.replace("postgres://", "postgresql+psycopg://", 1)
 elif db_url.startswith("postgresql://") and not db_url.startswith("postgresql+psycopg://"):
