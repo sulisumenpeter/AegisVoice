@@ -77,7 +77,7 @@ async function startVoiceSession() {
         // 1. Create Voice Session
         const res = await fetch(`${API_BASE}/voice/session`, {
             method: "POST",
-            headers: { "Authorization": `Bearer ${currentToken}` }
+            headers: {}
         });
 
         if (!res.ok) throw new Error("Session creation failed");
@@ -87,7 +87,7 @@ async function startVoiceSession() {
         // 2. Obtain AssemblyAI Temp Token
         const tokenRes = await fetch(`${API_BASE}/voice/token`, {
             method: "GET",
-            headers: { "Authorization": `Bearer ${currentToken}` }
+            headers: {}
         });
 
         if (!tokenRes.ok) throw new Error("AssemblyAI Token fetch failed");
@@ -356,7 +356,7 @@ async function stopAssemblyAIRealtime() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${currentToken}`,
+                
                 "x-voice-session-id": currentSessionId,
                 "Idempotency-Key": idempotencyKey
             },
@@ -472,4 +472,4 @@ window.hideReviewUI = function() {
 
 
 // Auto-login on load
-document.addEventListener('DOMContentLoaded', login);
+
