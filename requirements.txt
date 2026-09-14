@@ -7,3 +7,4 @@ python-jose
 slowapi==0.1.9
 httpx
 psycopg[binary]
+python-multipart
