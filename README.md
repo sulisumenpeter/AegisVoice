@@ -28,7 +28,7 @@ This architecture renders prompt injection and LLM manipulation harmless from an
 *   **Database:** PostgreSQL (for strict row-level locking, execution isolation, and `SELECT ... FOR UPDATE` support).
 *   **Caching/Rate Limiting:** Redis (for distributed rate limit counters via slowapi).
 *   **Secret Management:** Secrets injected via platform-level managers (AWS Secrets Manager, GCP).
-
+trigger deploy
 ## Documentation
 
 Comprehensive planning and architecture documents are located in the `docs/` directory:
