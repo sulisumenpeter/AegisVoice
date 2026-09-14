@@ -1,12 +1,9 @@
 fastapi
-uvicorn
 sqlalchemy
 pydantic
 pydantic-settings
 passlib[bcrypt]
-python-jose[cryptography]
+python-jose
 slowapi==0.1.9
-limits[redis]
-redis
 httpx
 psycopg[binary]
