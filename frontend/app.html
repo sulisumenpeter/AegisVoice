@@ -5,22 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AegisVoice | Secure Financial Operations</title>
     <script src="https://cdn.tailwindcss.com"></script>
-<script>
-        // Observe session-status to update the button visually
-        const sessionStatus = document.getElementById("session-status");
-        if (sessionStatus) {
-            const sessionObserver = new MutationObserver(() => {
-                if (sessionStatus.innerHTML.includes('Session Active')) {
-                    const sessionBtn = document.getElementById("session-section");
-                    if (sessionBtn) {
-                        sessionBtn.innerText = "Connected";
-                        sessionBtn.className = "text-sm font-medium text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-md";
-                    }
-                }
-            });
-            sessionObserver.observe(sessionStatus, { childList: true });
-        }
-</script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
@@ -34,38 +18,7 @@
                 }
             }
         }
-            // Observe session-status to update the button visually
-        const sessionStatus = document.getElementById("session-status");
-        if (sessionStatus) {
-            const sessionObserver = new MutationObserver(() => {
-                if (sessionStatus.innerHTML.includes('Session Active')) {
-                    const sessionBtn = document.getElementById("session-section");
-                    if (sessionBtn) {
-                        sessionBtn.innerText = "Connected";
-                        sessionBtn.className = "text-sm font-medium text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-md";
-                    }
-                }
-            });
-            sessionObserver.observe(sessionStatus, { childList: true });
-        }
-</script>
-    <style>
-        body { background-color: #f8fafc; color: #0f172a; }
-        /* Hide scrollbar for clean look */
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-        
-        .pulse-ring {
-            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-        }
-        @keyframes pulse-ring {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
-        }
-    </style>
+    </script>
 </head>
 <body class="h-screen w-screen overflow-hidden flex font-sans antialiased">
 
@@ -368,6 +321,24 @@
 <div id="auth-status" class="hidden"></div>
 
 <div id="session-status" class="hidden"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sessionStatus = document.getElementById("session-status");
+            if (sessionStatus) {
+                const sessionObserver = new MutationObserver(() => {
+                    if (sessionStatus.innerHTML.includes('Session Active')) {
+                        const sessionBtn = document.getElementById("session-section");
+                        if (sessionBtn) {
+                            sessionBtn.innerText = "Connected";
+                            sessionBtn.className = "text-sm font-medium text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-md cursor-default";
+                        }
+                    }
+                });
+                sessionObserver.observe(sessionStatus, { childList: true });
+            }
+        });
+    </script>
 </body>
 </html>
 
